@@ -81,18 +81,16 @@ while running:
         ball_speed_y *= -1
 
     if ball_rect.colliderect(paddle1_rect) or ball_rect.colliderect(paddle2_rect):
-        ball_speed_x *= -1
+        ball_speed_x = -ball_speed_x
+        ball_speed_x *= 1.1
+        ball_speed_y *= 1.1
+        if ball_speed_x >= 30:
+            ball_speed_x = 30
         if speed < 30:
-            speed += 5
+            speed += 1
         else:
             speed = 30
         ball_sound.play()
-        #if ball_speed_x < 30:
-        #    ball_speed_x += 5
-        #if ball_speed_x < 30 and ball_speed_x == -ball_speed_x:
-        #    ball_speed_x += 5
-        #else:
-        #    ball_speed_x = 30
 
     if ball_rect.left <= 0:
         ball_rect = pygame.Rect(screen_width//2 - ball_size//2, screen_height//2 - ball_size//2, ball_size, ball_size)
